@@ -1,0 +1,15 @@
+all: first
+A: first.c
+	gcc -E first.c -o first.i
+B: A
+	gcc -S first.i
+C: B
+	gcc -c first.s
+first: C
+	gcc first.o -o first -lm
+clean:
+	rm -f *-o first
+	rm -f *.o first.i
+	rm -f *.o first.s
+	rm -f *.o first.o
+	
